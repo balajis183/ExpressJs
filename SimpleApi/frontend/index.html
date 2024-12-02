@@ -1,0 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Fetching data from a express server</h1>
+
+    <script>
+      fetch("http://localhost:8000/students")
+        .then((res) => res.json())
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    </script>
+  </body>
+<!-- </html>  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Basic styling for the student list */
+      ul {
+        list-style-type: none; /* Remove default bullet points */
+        padding: 0;
+      }
+      li {
+        padding: 8px;
+        border: 1px solid #ccc; /* Add a border around each item */
+        margin: 4px 0; /* Space between items */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fetching data from an Express server</h1>
+    <ul id="student-list"></ul>
+    <!-- This is where the student data will be displayed -->
+
+    <script>
+      // Fetch data from the Express server
+      fetch("http://localhost:8000/students")
+        .then((res) => res.json())
+        .then((students) => {
+          const studentList = document.getElementById("student-list");
+
+          // Loop through the students and create list items
+          students.forEach((student) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${student.name}, Age: ${student.age}`; // Format the display text
+            studentList.appendChild(listItem); // Add the list item to the student list
+          });
+        })
+        .catch((err) => console.log(err)); // Handle errors
+    </script>
+  </body>
+</html>
